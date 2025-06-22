@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Montse 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      color: red;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 4em;
+      animation: glow 2s ease-in-out infinite alternate;
+      margin: 0;
+    }
+
+    .heart {
+      font-size: 150px;
+      animation: pulse 1.5s infinite;
+      text-shadow: 0 0 20px red, 0 0 40px red;
+      margin-top: 30px;
+    }
+
+    .text {
+      position: absolute;
+      color: red;
+      font-size: 2em;
+      font-weight: bold;
+      pointer-events: none;
+      animation: fade 1.5s ease-out forwards;
+      text-shadow: 0 0 10px red, 0 0 20px red;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px red;
+      }
+      to {
+        text-shadow: 0 0 30px red, 0 0 50px red;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fade {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Montse</h1>
+  <div class="heart">❤️</div>
+
+  <script>
+    const frases = [
+      "Te amo ❤️",
+      "Eres mi todo 💕",
+      "Mi reina 👑",
+      "Siempre contigo 💖",
+      "Mi amor eterno 💘",
+      "Solo tú 💞",
+      "Montse 💋"
+    ];
+
+    let index = 0;
+
+    document.body.addEventListener("click", function(e) {
+      const text = document.createElement("div");
+      text.className = "text";
+      text.textContent = frases[index];
+      index = (index + 1) % frases.length;
+
+      text.style.left = e.clientX + "px";
+      text.style.top = e.clientY + "px";
+
+      document.body.appendChild(text);
+
+      setTimeout(() => {
+        text.remove();
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
